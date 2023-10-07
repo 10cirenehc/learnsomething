@@ -16,6 +16,8 @@ int RiskTracker::updateRisk() {
         }
     }
     this->totalRisk += runningSum;
+    // Clear pending trades so not added again
+    this->pendingTrades.clear();
     return 0;
 }
 
