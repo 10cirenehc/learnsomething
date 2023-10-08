@@ -16,7 +16,15 @@ public:
     bool isHolding();
 private:
     double balance;
+    double buyPrice; 
     bool holding;
+    int downStreak;
+    int afterSellDownStreak;
+    int upStreak;
+    int fivePercentStreak;
+    std::vector<float> histPrices;
+    void buy(float *price);
+    void sell(float *price);
 };
 
 #endif //LEARNSOMETHING_HACKATHONBOT_H
