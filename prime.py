@@ -1,10 +1,11 @@
 import timeit
+import math
 
 def disasterCode():
     for i in range (2,2500):
         uniquePrimes = []
         currentPrime = i
-        for j in range (2,i):
+        for j in range (2,int(math.sqrt(i))+1):
             checkPrime = j
             flag = False
             for k in range (2,checkPrime-1):
