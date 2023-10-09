@@ -1,23 +1,37 @@
 import timeit
 import math
+from collections import defaultdict
 
 def disasterCode():
-    for i in range (2,2500):
-        uniquePrimes = []
+    prime_cache = {}
+    existingPrimes = [2]
+    for i in range (3, round(math.sqrt(1000))+1, 2):
+        prime = True
+        for j in existingPrimes:
+            if i%j==0:
+                prime = False
+                break
+        if prime:
+            existingPrimes.append(i)
+            
+    
+    prime_factors = defaultdict(set)
+    for i in range (2,1000):
         currentPrime = i
-        for j in range (2,int(math.sqrt(i))+1):
-            checkPrime = j
-            flag = False
-            for k in range (2,checkPrime-1):
-                if (j%k==0):
-                    flag = True
-                    break
-            if not flag and i%checkPrime==0 and checkPrime <= i:
-                while (currentPrime%checkPrime==0):
-                    currentPrime/=checkPrime
-                uniquePrimes.append(checkPrime)
-        if len(uniquePrimes) == 0:
-            uniquePrimes.append(i)
+        flag = True
+        for j in existingPrimes:
+            if currentPrime%j == 0:
+                flag = False
+                prime_factors[i].add(j)
+                currentPrime /= j
+                prime_factors[i] = prime_factors[i].union(prime_factors[currentPrime])
+                break
+        if(flag == True):
+            prime_factors[i].add(currentPrime)
+                
+                
+            
+            
 
 # Benchmark the code
 if __name__ == "__main__":
