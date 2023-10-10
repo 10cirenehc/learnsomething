@@ -1,6 +1,8 @@
 #include "pricingutil.h"
 
-PricingUtil::PricingUtil() {};
+PricingUtil::PricingUtil() {
+    this->val = 0;
+};
 
 //methods
 
