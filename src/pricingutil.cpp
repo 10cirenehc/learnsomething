@@ -14,3 +14,4 @@ float PricingUtil::calcVal(float prevPrice, float interest, float oleoConstant) 
 float PricingUtil::getVal() {
     return this->val;
 }
+
