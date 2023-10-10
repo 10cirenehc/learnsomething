@@ -16,7 +16,7 @@ def disasterCode():
             
     
     prime_factors = defaultdict(set)
-    for i in range (2,1000):
+    for i in range (2,2500):
         currentPrime = i
         flag = True
         for j in existingPrimes:
