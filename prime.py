@@ -3,20 +3,19 @@ import math
 from collections import defaultdict
 
 def disasterCode():
-    prime_cache = {}
-    existingPrimes = [2]
-    for i in range (3, round(math.sqrt(1000))+1, 2):
+    existingPrimes = set([2])
+    for i in range (3, round(math.sqrt(2500))+1, 2):
         prime = True
         for j in existingPrimes:
             if i%j==0:
                 prime = False
                 break
         if prime:
-            existingPrimes.append(i)
+            existingPrimes.add(i)
             
     
     prime_factors = defaultdict(set)
-    for i in range (2,1000):
+    for i in range (2,2500):
         currentPrime = i
         flag = True
         for j in existingPrimes:
@@ -29,9 +28,6 @@ def disasterCode():
         if(flag == True):
             prime_factors[i].add(currentPrime)
                 
-                
-            
-            
 
 # Benchmark the code
 if __name__ == "__main__":
